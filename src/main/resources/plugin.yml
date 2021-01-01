@@ -1,0 +1,148 @@
+name: PolarEssentials
+main: dev.bukgeuk.polaressentials.PolarEssentials
+author: Bukgeuk_
+description: Bukgeuk's Essentials Plugin
+version: 1.0
+api-version: 1.16
+
+commands:
+  now:
+    description: Show In-Game time
+    usage: "사용법: /<command>"
+    permission: polaressentials.now
+    permission-message: "You do not have permission!"
+  dm:
+    aliases: d
+    description: Send direct message
+    usage: "사용법: /<command> <player> <message>"
+    permission: polaressentials.dm
+    permission-message: "You do not have permission!"
+  spawn:
+    aliases: [s, sp]
+    description: Move to spawn location
+    usage: "사용법: /<command>"
+    permission: polaressentials.spawn
+    permission-message: "You do not have permission!"
+  setspawn:
+    description: Set spawn location
+    usage: "사용법: /<command>"
+    permission: polaressentials.setspawn
+    permission-message: "You do not have permission!"
+  back:
+    aliases: b
+    description: Move to previous location
+    usage: "사용법: /<command>"
+    permission: polaressentials.back
+    permission-message: "You do not have permission!"
+  tpa:
+    aliases: t
+    description: Send teleport request to other player
+    usage: "사용법: /<command> <player>"
+    permission: polaressentials.tpa
+    permission-message: "You do not have permission!"
+  tpahere:
+    aliases: tpah
+    description: Send teleport request to other player
+    usage: "사용법: /<command> <player>"
+    permission: polaressentials.tpahere
+    permission-message: "You do not have permission!"
+  tpaccept:
+    aliases: tpac
+    description: Accept a teleport request
+    usage: "사용법: /<command>"
+    permission: polaressentials.tpaccept
+    permission-message: "You do not have permission!"
+  tpdeny:
+    aliases: tpad
+    description: Deny a teleport request
+    usage: "사용법: /<command>"
+    permission: polaressentials.tpdeny
+    permission-message: "You do not have permission!"
+  home:
+    aliases: h
+    description: Move to home
+    usage: "사용법: /<command> [name]"
+    permission: polaressentials.home
+    permission-message: "You do not have permission!"
+  sethome:
+    description: Set a home
+    usage: "사용법: /<command> [name]"
+    permission: polaressentials.sethome
+    permission-message: "You do not have permission!"
+  delhome:
+    description: Delete a home
+    usage: "사용법: /<command> [name]"
+    permission: polaressentials.delhome
+    permission-message: "You do not have permission!"
+  homes:
+    aliases: hs
+    description: Show list of homes
+    usage: "사용법: /<command>"
+    permission: polaressentials.homes
+    permission-message: "You do not have permission!"
+  timer:
+    description: Bossbar timer
+    usage: "사용법: /<command> [start|remove|list]"
+    permission: polaressentials.timer
+    permission-message: "You do not have permission!"
+  motd:
+    description: Edit motd of server
+    usage: "사용법: /<command> <text>"
+    permission: polaressentials.motd
+    permission-message: "You do not have permission!"
+
+permissions:
+  polaressentials.*:
+    description: Allows all PolarEssentials command
+    default: op
+    children:
+      polaressentials.now: true
+      polaressentials.dm: true
+      polaressentials.spawn: true
+      polaressentials.setspawn: true
+      polaressentials.back: true
+      polaressentials.tpa: true
+      polaressentials.tpahere: true
+      polaressentials.tpaccept: true
+      polaressentials.tpdeny: true
+      polaressentials.home: true
+      polaressentials.sethome: true
+      polaressentials.delhome: true
+      polaressentials.homes: true
+      polaressentials.timer: true
+      polaressentials.motd: true
+  polaressentials.now:
+    default: true
+  polaressentials.dm:
+    default: true
+  polaressentials.spawn:
+    default: true
+  polaressentials.setspawn:
+    default: op
+  polaressentials.back:
+    default: true
+  polaressentials.tpa:
+    default: true
+  polaressentials.tpahere:
+    default: true
+  polaressentials.tpaccept:
+    default: true
+  polaressentials.tpdeny:
+    default: true
+  polaressentials.home:
+    default: true
+  polaressentials.sethome:
+    default: true
+  polaressentials.delhome:
+    default: true
+  polaressentials.homes:
+    default: true
+  polaressentials.timer:
+    default: op
+  polaressentials.motd:
+    default: op
+
+
+
+
+
