@@ -28,7 +28,7 @@ class CommandSetHome(private val dataFolder: String, private val homeLimit: Int)
             data = if (file.exists()) {
                 mapper.readValue(file)
             } else {
-                File(dataFolder, "home").mkdir()
+                if (!File("$dataFolder/home/").exists()) File(dataFolder, "home").mkdir()
                 mutableMapOf()
             }
 
