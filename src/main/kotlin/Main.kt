@@ -12,6 +12,7 @@ class PolarEssentials: JavaPlugin() {
         config.addDefault("tpa-request-expiration", 60)
         config.addDefault("use-colored-chat", false)
         config.addDefault("motd", "A Minecraft Server")
+        config.addDefault("welcome-message", "&dWelcome to the Server!")
         config.options().copyDefaults(true)
         saveConfig()
 
@@ -34,6 +35,8 @@ class PolarEssentials: JavaPlugin() {
         ServerListPingEvent().setMotd(config.getString("motd") ?: "A Minecraft Server")
 
         server.pluginManager.registerEvents(ServerListPingEvent(), this)
+        server.pluginManager.registerEvents(PlayerJoinEvent(dataFolder.absolutePath,
+            config.getString("welcome-message") ?: "&dWelcome to Server!"), this)
         if (config.getBoolean("use-colored-chat")) {
             server.pluginManager.registerEvents(ChatEvent(), this)
         }
