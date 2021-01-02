@@ -2,7 +2,7 @@ name: PolarEssentials
 main: dev.bukgeuk.polaressentials.PolarEssentials
 author: Bukgeuk_
 description: Bukgeuk's Essentials Plugin
-version: 1.1
+version: 1.2
 api-version: 1.16
 
 commands:
@@ -24,8 +24,8 @@ commands:
     permission: polaressentials.spawn
     permission-message: "You do not have permission!"
   setspawn:
-    description: Set spawn location
-    usage: "사용법: /<command>"
+    description: Set spawn location or link to spawn of other world
+    usage: "사용법: /<command> [world]"
     permission: polaressentials.setspawn
     permission-message: "You do not have permission!"
   back:
@@ -82,7 +82,7 @@ commands:
     permission-message: "You do not have permission!"
   timer:
     description: Bossbar timer
-    usage: "사용법: /<command> [start|remove|list]"
+    usage: "사용법: /<command> [ start | remove | list ]"
     permission: polaressentials.timer
     permission-message: "You do not have permission!"
   motd:
