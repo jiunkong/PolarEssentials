@@ -21,13 +21,13 @@ data class BossbarTimer(
 class CommandTimer(): CommandExecutor {
     companion object {
         @JvmField var Bossbars: MutableMap<String, BossbarTimer> = mutableMapOf()
-        @JvmField var Timer = timer(period = 10) {
+        @JvmField var Timer = timer(period = 1) {
             for (key in Bossbars.keys) {
                 val item = Bossbars[key]
                 item!!.TimeNow -= 1
                 if (item!!.TimeNow >= 0) item.Bossbar.progress = item.TimeNow.toDouble() / item.Time.toDouble()
 
-                if (item.TimeNow == (-100).toLong()) {
+                if (item.TimeNow == (-1000).toLong()) {
                     CommandTimer().removeTimer(key)
                 }
             }
@@ -45,7 +45,7 @@ class CommandTimer(): CommandExecutor {
 
                     val name = args[1]
                     val time: Long
-                    try { time = args[3].toLong() * 100 } catch (e: NumberFormatException) {
+                    try { time = args[3].toLong() * 1000 } catch (e: NumberFormatException) {
                         sender.sendMessage("사용법: /timer start <name> <color> <time> <title>")
                         return true
                     }

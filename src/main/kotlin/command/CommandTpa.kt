@@ -23,11 +23,7 @@ class RequestExpirationTimer {
                     RequestExpirationTimer().removeTimer(item) // remove player in table
                     TeleportRequest().popRequest(item) // remove teleport request
 
-                    for (p in Bukkit.getOnlinePlayers()) {
-                        if (p.uniqueId == item) {
-                            p.sendMessage("${Color.ORANGE}텔레포트 요청이 만료되었습니다")
-                        }
-                    }
+                    Bukkit.getPlayer(item)?.sendMessage("${Color.ORANGE}텔레포트 요청이 만료되었습니다")
                 }
             }
         }
@@ -103,7 +99,7 @@ class CommandTpa: CommandExecutor {
             return false
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }
@@ -120,22 +116,22 @@ class CommandTpaccept: CommandExecutor {
                     return true
                 }
                 req.type == TeleportRequest.TeleportType.TPA -> {
-                    for (p in Bukkit.getOnlinePlayers()) {
-                        if (p.uniqueId == req.from) {
-                            p.sendMessage("${Color.ORANGE}tpa 요청을 수락함")
-                            p.sendMessage("${Color.RED}${sender.name}${Color.ORANGE}(으)로 이동합니다")
-                            CommandBack().pushLocation(p.uniqueId, p.location)
-                            p.teleport(sender)
-                            TeleportRequest().popRequest(sender.uniqueId)
-                            return true
-                        }
+                    val p = Bukkit.getPlayer(req.from)
+                    if (p != null) {
+                        p.sendMessage("${Color.ORANGE}tpa 요청을 수락함")
+                        p.sendMessage("${Color.RED}${sender.name}${Color.ORANGE}(으)로 이동합니다")
+                        CommandBack().pushLocation(p.uniqueId, p.location)
+                        p.teleport(sender)
+                        TeleportRequest().popRequest(sender.uniqueId)
+                        return true
                     }
                     sender.sendMessage("${Color.ORANGE}유저를 찾을 수 없습니다")
                     TeleportRequest().popRequest(sender.uniqueId)
                     return true
                 }
                 req.type == TeleportRequest.TeleportType.TPAHERE -> {
-                    for (p in Bukkit.getOnlinePlayers()) {
+                    val p = Bukkit.getPlayer(req.from)
+                    if (p != null) {
                         if (p.uniqueId == req.from) {
                             p.sendMessage("${Color.ORANGE}tpahere 요청을 수락함")
                             sender.sendMessage("${Color.RED}${p.name}${Color.ORANGE}(으)로 이동합니다")
@@ -152,7 +148,7 @@ class CommandTpaccept: CommandExecutor {
             }
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }
@@ -169,23 +165,21 @@ class CommandTpdeny: CommandExecutor {
                     return true
                 }
                 req.type == TeleportRequest.TeleportType.TPA -> {
-                    for (p in Bukkit.getOnlinePlayers()) {
-                        if (p.uniqueId == req.from) {
-                            TeleportRequest().popRequest(sender.uniqueId)
-                            p.sendMessage("${Color.ORANGE}tpa 요청을 거절함")
-                            return true
-                        }
+                    val p = Bukkit.getPlayer(req.from)
+                    if (p != null) {
+                        TeleportRequest().popRequest(sender.uniqueId)
+                        p.sendMessage("${Color.ORANGE}tpa 요청을 거절함")
+                        return true
                     }
                     TeleportRequest().popRequest(sender.uniqueId)
                     return true
                 }
                 req.type == TeleportRequest.TeleportType.TPAHERE -> {
-                    for (p in Bukkit.getOnlinePlayers()) {
-                        if (p.uniqueId == req.from) {
-                            TeleportRequest().popRequest(sender.uniqueId)
-                            p.sendMessage("${Color.ORANGE}tpahere 요청을 거절함")
-                            return true
-                        }
+                    val p = Bukkit.getPlayer(req.from)
+                    if (p != null) {
+                        TeleportRequest().popRequest(sender.uniqueId)
+                        p.sendMessage("${Color.ORANGE}tpahere 요청을 거절함")
+                        return true
                     }
                     TeleportRequest().popRequest(sender.uniqueId)
                     return true
@@ -193,7 +187,7 @@ class CommandTpdeny: CommandExecutor {
             }
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }
@@ -237,7 +231,7 @@ class CommandTpahere: CommandExecutor{
             return false
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }

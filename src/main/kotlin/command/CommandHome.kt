@@ -4,6 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import dev.bukgeuk.polaressentials.util.Color
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Location
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -56,7 +57,7 @@ class CommandSetHome(private val dataFolder: String, private val homeLimit: Int)
             return true
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }
@@ -73,7 +74,7 @@ class CommandHome(private val dataFolder: String): CommandExecutor {
             if (file.exists()) {
                 data = mapper.readValue(file)
             } else {
-                sender.sendMessage("집을 찾을 수 없습니다")
+                sender.sendMessage("${Color.ORANGE}집을 찾을 수 없습니다")
                 return true
             }
 
@@ -81,7 +82,7 @@ class CommandHome(private val dataFolder: String): CommandExecutor {
             if (args.isNotEmpty()) name = args[0]
 
             if (data[name] == null) {
-                sender.sendMessage("집을 찾을 수 없습니다")
+                sender.sendMessage("${Color.ORANGE}집을 찾을 수 없습니다")
                 return true
             }
 
@@ -93,7 +94,7 @@ class CommandHome(private val dataFolder: String): CommandExecutor {
             return true
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }
@@ -110,7 +111,7 @@ class CommandDelHome(private val dataFolder: String): CommandExecutor {
             if (file.exists()) {
                 data = mapper.readValue(file)
             } else {
-                sender.sendMessage("집을 찾을 수 없습니다")
+                sender.sendMessage("${Color.ORANGE}집을 찾을 수 없습니다")
                 return true
             }
 
@@ -118,7 +119,7 @@ class CommandDelHome(private val dataFolder: String): CommandExecutor {
             if (args.isNotEmpty()) name = args[0]
 
             if (data[name] == null) {
-                sender.sendMessage("집을 찾을 수 없습니다")
+                sender.sendMessage("${Color.ORANGE}집을 찾을 수 없습니다")
                 return true
             }
             
@@ -133,7 +134,7 @@ class CommandDelHome(private val dataFolder: String): CommandExecutor {
             return true
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }
@@ -165,7 +166,7 @@ class CommandHomes(private val dataFolder: String, private val homeLimit: Int): 
             return true
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }

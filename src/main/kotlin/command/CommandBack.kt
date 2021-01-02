@@ -1,6 +1,7 @@
 package dev.bukgeuk.polaressentials.command
 
 import dev.bukgeuk.polaressentials.util.Color
+import org.bukkit.ChatColor
 import org.bukkit.Location
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -29,7 +30,7 @@ class CommandBack: CommandExecutor {
             return true
         }
 
-        sender.sendMessage("Error: This command isn't available on the console")
+        sender.sendMessage("${ChatColor.RED}${ChatColor.BOLD}Error: ${ChatColor.RESET}This command isn't available on the console")
 
         return true
     }
