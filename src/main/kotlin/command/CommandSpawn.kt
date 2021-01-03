@@ -47,7 +47,7 @@ class CommandSetSpawn(private val dataFolder: String): CommandExecutor {
                 val location = data[args[0]]!!.location
                 sender.sendMessage(
                     "${Color.ORANGE}이제 ${Color.RED}${sender.world.name}${Color.ORANGE} 세계의 스폰은 " +
-                            "${Color.RED}${location[0]}, ${location[1]}, ${location[2]}, ${data[args[0]]!!.world}${Color.ORANGE} 입니다"
+                            "${Color.RED}${String.format("%.1f", location[0])}, ${String.format("%.1f", location[1])}, ${String.format("%.1f", location[2])}, ${data[args[0]]!!.world}${Color.ORANGE} 입니다"
                 )
             } else {
                 data[sender.world.name] = World(
