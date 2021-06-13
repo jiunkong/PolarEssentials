@@ -2,7 +2,7 @@ name: PolarEssentials
 main: dev.bukgeuk.polaressentials.PolarEssentials
 author: Bukgeuk_
 description: Bukgeuk's Essentials Plugin
-version: 2.0-SNAPSHOT
+version: 2.0.0
 api-version: 1.17
 
 commands:
