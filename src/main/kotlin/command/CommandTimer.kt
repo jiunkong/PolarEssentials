@@ -108,6 +108,7 @@ class CommandTimer(): CommandExecutor {
             str += "${item}, "
         }
 
-        return str.substring(0, str.length - 2)
+        return if (str.isEmpty()) str
+        else str.substring(0, str.length - 2)
     }
 }
