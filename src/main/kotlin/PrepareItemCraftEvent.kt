@@ -7,6 +7,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.PrepareItemCraftEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
+import org.bukkit.plugin.java.JavaPlugin
 import kotlin.math.max
 
 class PrepareItemCraftEvent(private val limit: Int): Listener {
@@ -48,9 +49,11 @@ class PrepareItemCraftEvent(private val limit: Int): Listener {
             new[k] = en2[k]!!
 
         val item = ItemStack(temp[0].type)
-        val meta: ItemMeta? = item.itemMeta
-        if (temp[0].itemMeta?.displayName == temp[0].itemMeta?.localizedName && temp[1].itemMeta?.displayName != temp[1].itemMeta?.localizedName)
+        val meta = item.itemMeta
+        if (temp[0].itemMeta?.hasDisplayName() == true)
             meta?.setDisplayName(temp[0].itemMeta?.displayName)
+        else if (temp[1].itemMeta?.hasDisplayName() == true)
+            meta?.setDisplayName(temp[1].itemMeta?.displayName)
         item.itemMeta = meta
         item.addUnsafeEnchantments(new)
 
